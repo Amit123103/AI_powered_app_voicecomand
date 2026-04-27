@@ -56,7 +56,7 @@ Your data is protected. Secure API storage and wake-only listening ensure that y
 
 ![Developer](assets/developer.jpg)
 
-Created by **Farhan Ali**, Lead AI Engineer at Future AI Systems. Farhan is dedicated to building tools that bridge the gap between human intent and machine execution.
+Created by **Amit Kumar**, an **ML & DevOps Engineer** focused on building scalable AI systems, automation pipelines, and cloud-native solutions. Amit combines machine learning expertise with DevOps practices to turn ideas into reliable real-world products. Passionate about MLOps, CI/CD, cloud infrastructure, APIs, and intelligent automation. Always creating future-ready technology with performance, security, and innovation in mind.
 
 ---
 
