@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future AI Assistant | The Most Advanced AI for Android</title>
+    <meta name="description" content="Experience the future of mobile AI. Future AI Assistant offers cognitive memory, neural voice interface, and cross-app automation for Android.">
+    
+    <!-- SEO & Social Meta Tags -->
+    <meta property="og:title" content="Future AI Assistant">
+    <meta property="og:description" content="The most advanced AI assistant ever built for Android.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #0B0F17;
+            --bg-card: #1E2430;
+            --gold-primary: #CBA800;
+            --gold-bright: #E8C800;
+            --gold-glow: rgba(203, 168, 0, 0.20);
+            --white-text: #F5F6FA;
+            --soft-gray: #8892A4;
+            --muted-gray: #5C6678;
+            --border-subtle: rgba(203, 168, 0, 0.13);
+            --glass-bg: rgba(30, 36, 48, 0.7);
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-deep);
+            color: var(--white-text);
+            font-family: 'DM Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deep);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-primary);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-bright);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Syne', sans-serif;
+            letter-spacing: -0.04em;
+            text-transform: capitalize;
+        }
+
+        .code-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Noise Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-radius: 24px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            gap: 0.75rem;
+        }
+
+        .btn-gold {
+            background: var(--gold-primary);
+            color: #000;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-bright);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(203, 168, 0, 0.4);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            color: var(--white-text);
+            border: 1px solid rgba(245, 246, 250, 0.1);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(245, 246, 250, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 1rem 0;
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--gold-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gold-primary);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--soft-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-primary);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate3d(1, 1, 1, 0deg); }
+            50% { transform: translateY(-20px) rotate3d(1, 1, 1, 2deg); }
+            100% { transform: translateY(0px) rotate3d(1, 1, 1, 0deg); }
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Sections */
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 8rem;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(203, 168, 0, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            border: 1px solid var(--border-subtle);
+            margin-bottom: 2rem;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold-bright);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--gold-bright);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--gold-primary);
+            display: block;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--soft-gray);
+            margin-bottom: 3rem;
+            max-width: 540px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 2rem;
+        }
+
+        .stat-item h4 {
+            font-size: 1.5rem;
+            color: var(--white-text);
+        }
+
+        .stat-item p {
+            color: var(--muted-gray);
+            font-size: 0.9rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-mockup {
+            width: 320px;
+            height: 640px;
+            background: #000;
+            border-radius: 40px;
+            border: 8px solid #1a1a1a;
+            position: relative;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+            animation: float 6s ease-in-out infinite;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-deep);
+            background-image: url('assets/hero_phone.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .glow-orb {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            z-index: 1;
+            filter: blur(50px);
+        }
+
+        /* Features */
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--soft-gray);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 3rem;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold-glow);
+            border-radius: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--gold-primary);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--soft-gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Carousel */
+        .carousel-section {
+            background: #0d121c;
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            cursor: grab;
+        }
+
+        .carousel-slide {
+            flex: 0 0 300px;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 4px solid #1a1a1a;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: var(--transition);
+            opacity: 0.5;
+            transform: scale(0.9);
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .pricing-card {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .pricing-card.pro {
+            border-color: var(--gold-primary);
+            background: linear-gradient(145deg, rgba(30, 36, 48, 0.9), rgba(11, 15, 23, 0.9));
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--gold-glow);
+        }
+
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--muted-gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 3rem;
+            flex-grow: 1;
+        }
+
+        .pricing-features li {
+            margin-bottom: 1rem;
+            color: var(--soft-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--gold-primary);
+            font-weight: bold;
+        }
+
+        /* Developer */
+        .developer-card {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            padding: 4rem;
+            align-items: center;
+        }
+
+        .dev-visual {
+            position: relative;
+        }
+
+        .dev-img-container {
+            border-radius: 30px;
+            overflow: hidden;
+            border: 2px solid var(--gold-primary);
+            box-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        .dev-img-container img {
+            width: 100%;
+            display: block;
+        }
+
+        .dev-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dev-title {
+            color: var(--gold-primary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .dev-bio {
+            color: var(--soft-gray);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .tech-badge {
+            background: rgba(245, 246, 250, 0.05);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--soft-gray);
+            border: 1px solid rgba(245, 246, 250, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #05070a;
+            padding: 6rem 0 3rem;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--soft-gray);
+            margin: 1.5rem 0;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--muted-gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold-primary);
+        }
+
+        .footer-bottom {
+            padding-top: 3rem;
+            border-top: 1px solid rgba(245, 246, 250, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--muted-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-sub { margin-left: auto; margin-right: auto; }
+            .hero-btns { justify-content: center; flex-direction: column; }
+            .hero-stats { justify-content: center; }
+            .developer-card { grid-template-columns: 1fr; text-align: center; padding: 2rem; }
+            .tech-badges { justify-content: center; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .section-header h2 { font-size: 2.5rem; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-brand p { margin-left: auto; margin-right: auto; }
+            .footer-bottom { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                FUTURE AI
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#screenshots">Screenshots</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#developer">Developer</a>
+                <a href="#download">Download</a>
+            </div>
+            <a href="https://expo.dev/accounts/amitkumar23s-organization/projects/futureai-assitant/builds/50d48116-d3d2-4cab-beef-b45c48020f7f" class="btn btn-gold" style="padding: 0.75rem 1.5rem; font-size: 0.9rem;">
+                ⬇ Download APK
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content reveal">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span class="code-label" style="color: var(--white-text);">● AI-POWERED · ANDROID 2025</span>
+                    </div>
+                    <h1>
+                        Your <span>Cognitive AI</span>
+                        Companion for Voice,
+                        Memory & Automation
+                    </h1>
+                    <p class="hero-sub">
+                        Talk naturally. Control your phone. Build routines. Experience the future of personal intelligence on Android.
+                    </p>
+                    <div class="hero-btns">
+                        <a href="https://expo.dev/accounts/amitkumar23s-organization/projects/futureai-assitant/builds/50d48116-d3d2-4cab-beef-b45c48020f7f" class="btn btn-gold">⬇ Download APK</a>
+                        <a href="#" class="btn btn-outline">▶ Play Store</a>
+                        <a href="#" class="btn btn-ghost">▷ Watch Demo</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h4 class="counter" data-target="50000">0</h4>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4 class="counter" data-target="99">0</h4>
+                            <p>Uptime %</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>5+</h4>
+                            <p>AI Engines</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual reveal" style="transition-delay: 0.2s;">
+                    <div class="glow-orb"></div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="code-label">Core Capabilities</span>
+                    <h2>Built Different. Built for the Future.</h2>
+                    <p>Harness the power of multiple AI engines integrated directly into your mobile experience.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card glass reveal">
+                        <div class="feature-icon">🧠</div>
+                        <h3>Cognitive Memory Engine</h3>
+                        <p>Learns your habits, suggests routines, and saves your favorite actions to anticipate your needs before you even ask.</p>
+                    </div>
+                    <div class="feature-card glass reveal" style="transition-delay: 0.1s;">
+                        <div class="feature-icon">🎙️</div>
+                        <h3>Neural Voice Interface</h3>
+                        <p>Experience real-time commands with advanced wake-word detection and smart, human-like AI responses that feel natural.</p>
+                    </div>
+                    <div class="feature-card glass reveal" style="transition-delay: 0.2s;">
+                        <div class="feature-icon">📸</div>
+                        <h3>Automated Intelligence</h3>
+                        <p>Control your camera, send messages, set maps, and adjust system settings entirely by voice with deep system integration.</p>
+                    </div>
+                    <div class="feature-card glass reveal">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Multi AI Engine Support</h3>
+                        <p>Switch seamlessly between Gemini, OpenAI, NVIDIA, and Anthropic to get the best intelligence for every specific task.</p>
+                    </div>
+                    <div class="feature-card glass reveal" style="transition-delay: 0.1s;">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Privacy Shield Mode</h3>
+                        <p>Secure API storage and wake-only listening ensure your data stays protected and under your absolute control.</p>
+                    </div>
+                    <div class="feature-card glass reveal" style="transition-delay: 0.2s;">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Cross-App Automation</h3>
+                        <p>Build complex routines that control any app on your device. Smart triggers let you automate your digital life effortlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section id="screenshots" class="carousel-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="code-label">Interface Design</span>
+                    <h2>See It. Feel It. Experience It.</h2>
+                </div>
+                <div class="carousel-container reveal">
+                    <div class="carousel-track" id="carousel-track">
+                        <div class="carousel-slide active">
+                            <img src="assets/screenshot_home.png" alt="Home Dashboard">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/screenshot_listening.png" alt="Voice Listening">
+                        </div>
+                        <div class="carousel-slide">
+                            <img src="assets/screenshot_chat.png" alt="AI Chat">
+                        </div>
+                        <!-- Add more screenshots if generated -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="download-cta">
+            <div class="container glass" style="padding: 6rem; text-align: center; border-color: var(--gold-primary); background: radial-gradient(circle at center, rgba(203, 168, 0, 0.1) 0%, transparent 70%);">
+                <div class="reveal">
+                    <span class="code-label">Ready to begin?</span>
+                    <h2 style="font-size: 3.5rem; margin: 1.5rem 0;">Download Future AI Assistant</h2>
+                    <p style="color: var(--soft-gray); font-size: 1.25rem; margin-bottom: 3rem;">Free to start. Powerful from day one. Available now on Android.</p>
+                    <div class="hero-btns" style="justify-content: center; align-items: center; gap: 3rem;">
+                        <div style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
+                            <a href="https://expo.dev/accounts/amitkumar23s-organization/projects/futureai-assitant/builds/50d48116-d3d2-4cab-beef-b45c48020f7f" class="btn btn-gold">⬇ Download APK Directly <span style="font-size: 0.8rem; opacity: 0.7; margin-left: 0.5rem;">28.4 MB</span></a>
+                            <a href="#" class="btn btn-outline">▶ Get on Google Play</a>
+                            <a href="#" class="btn btn-ghost">🔬 Join Beta Testing</a>
+                        </div>
+                        <div class="glass" style="padding: 1.5rem; border-color: var(--gold-primary); display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                            <img src="assets/qr_code.jpg" alt="Scan to Download" style="width: 160px; height: 160px; border-radius: 12px; background: #fff; padding: 10px;">
+                            <p class="code-label" style="font-size: 0.7rem; color: var(--gold-primary);">Scan to Download</p>
+                        </div>
+                    </div>
+                    <div class="code-label" style="margin-top: 3rem; color: var(--muted-gray);">
+                        Version: 2.4.1  ·  Updated: Dec 2024  ·  Android 8.0+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="code-label">Subscriptions</span>
+                    <h2>Choose Your Intelligence Level</h2>
+                </div>
+                <div class="pricing-grid">
+                    <div class="pricing-card glass reveal">
+                        <div class="pricing-header">
+                            <h3>FREE</h3>
+                            <div class="price">₹0<span>/mo</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>Basic voice commands</li>
+                            <li>1 AI engine (Gemini)</li>
+                            <li>20 commands/day</li>
+                            <li>Standard response speed</li>
+                        </ul>
+                        <a href="#" class="btn btn-ghost">Get Started Free</a>
+                    </div>
+                    <div class="pricing-card glass pro reveal" style="transition-delay: 0.1s;">
+                        <div class="pricing-header">
+                            <span class="code-label" style="font-size: 0.7rem;">⭐ Most Popular</span>
+                            <h3 style="margin-top: 0.5rem;">PRO</h3>
+                            <div class="price">₹299<span>/mo</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>Unlimited voice commands</li>
+                            <li>3 AI engines</li>
+                            <li>Memory & habit learning</li>
+                            <li>2× faster AI responses</li>
+                            <li>Custom wake words</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold">Upgrade to Pro</a>
+                    </div>
+                    <div class="pricing-card glass reveal" style="transition-delay: 0.2s;">
+                        <div class="pricing-header">
+                            <h3>ULTRA</h3>
+                            <div class="price">₹699<span>/mo</span></div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li>All 5 AI engines</li>
+                            <li>Multi-AI switching</li>
+                            <li>Priority server speed</li>
+                            <li>Full automation routines</li>
+                            <li>Premium support</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Go Ultra</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Developer Section -->
+        <section id="developer" class="developer">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="code-label">The Visionary</span>
+                    <h2>The Mind Behind the Machine</h2>
+                </div>
+                <div class="developer-card glass reveal">
+                    <div class="dev-visual">
+                        <div class="dev-img-container">
+                            <img src="assets/developer.png" alt="Farhan Ali">
+                        </div>
+                    </div>
+                    <div class="dev-content">
+                        <h3>Farhan Ali</h3>
+                        <p class="dev-title">Founder & Lead AI Engineer · Future AI Systems</p>
+                        <p class="dev-bio">
+                            Farhan Ali is an independent AI/Android developer and the sole architect behind Future AI Assistant. With a deep passion for conversational AI, automation, and Android development, he has spent years building tools that feel genuinely intelligent — not just reactive.
+                        </p>
+                        <div class="tech-badges">
+                            <span class="tech-badge">Android</span>
+                            <span class="tech-badge">Kotlin</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Gemini API</span>
+                            <span class="tech-badge">OpenAI</span>
+                            <span class="tech-badge">NVIDIA AI</span>
+                        </div>
+                        <div style="margin-top: 2rem; display: flex; gap: 1.5rem;">
+                            <a href="#" style="color: var(--gold-primary); text-decoration: none; font-weight: 600;">GitHub</a>
+                            <a href="#" style="color: var(--gold-primary); text-decoration: none; font-weight: 600;">LinkedIn</a>
+                            <a href="#" style="color: var(--gold-primary); text-decoration: none; font-weight: 600;">Twitter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="code-label">Community Echoes</span>
+                    <h2>Voices from the Future</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card glass reveal">
+                        <div style="color: var(--gold-primary); margin-bottom: 1rem;">★★★★★</div>
+                        <p style="margin-bottom: 1.5rem; font-style: italic;">"Best AI assistant I've ever used. It actually learns how I work. The routines are a game changer."</p>
+                        <h4 style="font-size: 1rem;">Aryan S.</h4>
+                        <p style="font-size: 0.85rem; color: var(--muted-gray);">Student</p>
+                    </div>
+                    <div class="feature-card glass reveal" style="transition-delay: 0.1s;">
+                        <div style="color: var(--gold-primary); margin-bottom: 1rem;">★★★★★</div>
+                        <p style="margin-bottom: 1.5rem; font-style: italic;">"Feels like something from 2030. The voice recognition is insane even in noisy environments."</p>
+                        <h4 style="font-size: 1rem;">Riya M.</h4>
+                        <p style="font-size: 0.85rem; color: var(--muted-gray);">Developer</p>
+                    </div>
+                    <div class="feature-card glass reveal" style="transition-delay: 0.2s;">
+                        <div style="color: var(--gold-primary); margin-bottom: 1rem;">★★★★★</div>
+                        <p style="margin-bottom: 1.5rem; font-style: italic;">"Way better than Google Assistant. The memory feature alone is worth the upgrade to Pro."</p>
+                        <h4 style="font-size: 1rem;">Kabir T.</h4>
+                        <p style="font-size: 0.85rem; color: var(--muted-gray);">Designer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon"></div>
+                        FUTURE AI
+                    </a>
+                    <p>Building cognitive AI for the next generation of mobile users. Experience intelligence without compromise.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <!-- Social Icons Placeholders -->
+                        <div style="width: 32px; height: 32px; background: var(--bg-card); border-radius: 50%;"></div>
+                        <div style="width: 32px; height: 32px; background: var(--bg-card); border-radius: 50%;"></div>
+                        <div style="width: 32px; height: 32px; background: var(--bg-card); border-radius: 50%;"></div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#screenshots">Screenshots</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#download">Download APK</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Developer</h4>
+                    <ul>
+                        <li><a href="#developer">About Creator</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Telegram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Future AI Systems. All Rights Reserved.</p>
+                <p>Made with ❤️ in India 🇮🇳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal animations on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const observerOptions = {
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        reveals.forEach(reveal => observer.observe(reveal));
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const count = +entry.target.innerText;
+                    const speed = 2000 / target;
+
+                    const updateCount = () => {
+                        const current = +entry.target.innerText;
+                        if (current < target) {
+                            entry.target.innerText = Math.ceil(current + (target / 100));
+                            setTimeout(updateCount, 10);
+                        } else {
+                            entry.target.innerText = target + (target === 99 ? '%' : '+');
+                        }
+                    };
+                    updateCount();
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 1 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Simple Carousel Logic
+        const track = document.getElementById('carousel-track');
+        const slides = Array.from(track.children);
+        let currentSlideIndex = 0;
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlideIndex);
+            });
+            const offset = -currentSlideIndex * (300 + 32); // slide width + gap
+            track.style.transform = `translateX(${offset}px)`;
+        }
+
+        // Auto play carousel
+        setInterval(() => {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            updateCarousel();
+        }, 3000);
+
+        // Basic Drag to scroll for mobile/desktop
+        let isDragging = false;
+        let startX;
+        let scrollLeft;
+
+        track.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - track.offsetLeft;
+            scrollLeft = track.scrollLeft;
+        });
+
+        track.addEventListener('mouseleave', () => isDragging = false);
+        track.addEventListener('mouseup', () => isDragging = false);
+        track.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - track.offsetLeft;
+            const walk = (x - startX) * 2;
+            track.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
