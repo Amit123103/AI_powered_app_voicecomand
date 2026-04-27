@@ -53,6 +53,9 @@ Your data is protected. Secure API storage and wake-only listening ensure that y
 ---
 
 ## 👨‍💻 About the Developer
+
+![Developer](assets/developer.jpg)
+
 Created by **Farhan Ali**, Lead AI Engineer at Future AI Systems. Farhan is dedicated to building tools that bridge the gap between human intent and machine execution.
 
 ---
