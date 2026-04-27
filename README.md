@@ -58,6 +58,9 @@ Your data is protected. Secure API storage and wake-only listening ensure that y
 
 Created by **Amit Kumar**, an **ML & DevOps Engineer** focused on building scalable AI systems, automation pipelines, and cloud-native solutions. Amit combines machine learning expertise with DevOps practices to turn ideas into reliable real-world products. Passionate about MLOps, CI/CD, cloud infrastructure, APIs, and intelligent automation. Always creating future-ready technology with performance, security, and innovation in mind.
 
+### About Future AI Systems
+**Future AI Systems** is an innovation-driven technology creator focused on building next-generation artificial intelligence products that simplify daily life and transform how people interact with devices. Founded with a vision to merge intelligence, automation, and human convenience, Future AI Systems develops smart digital solutions designed for speed, reliability, privacy, and futuristic user experiences.
+
 ---
 
 ## 📥 Get Started
